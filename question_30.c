@@ -14,7 +14,11 @@ int productOdd(int arr[], int size) {
             hasOdd = 1;
         }
     }
-    return hasOdd ? prod : 0;
+    if (hasOdd == 1)
+    return prod;
+else
+    return 0;
+
 }
 
 int main() {
