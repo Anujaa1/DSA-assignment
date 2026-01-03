@@ -1,17 +1,28 @@
 #include <stdio.h>
 
-void delete(int a[], int *n, int pos) {
-    for(int i = pos; i < *n-1; i++)
-        a[i] = a[i+1];
-    (*n)--;
+void deleteElement(int arr[], int *size, int pos) {
+    if (pos < 0 || pos >= *size) {
+        printf("Invalid position.\n");
+        return;
+    }
+    for (int i = pos; i < *size - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+    (*size)--;
 }
 
 int main() {
-    int a[10], n, pos;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &a[i]);
+    int size, pos;
+    printf("Enter size: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter elements: ");
+    for (int i = 0; i < size; i++) scanf("%d", &arr[i]);
+    printf("Enter position to delete (0-index): ");
     scanf("%d", &pos);
-    delete(a, &n, pos);
-    for(int i = 0; i < n; i++) printf("%d ", a[i]);
+    deleteElement(arr, &size, pos);
+    printf("Modified array: ");
+    for (int i = 0; i < size; i++) printf("%d ", arr[i]);
+    printf("\n");
     return 0;
 }

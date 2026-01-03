@@ -1,16 +1,20 @@
 #include <stdio.h>
 
-float average(int a[], int n) {
+float average(int arr[], int size) {
     int sum = 0;
-    for(int i = 0; i < n; i++)
-        sum += a[i];
-    return (float)sum / n;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return (float)sum / size;
 }
 
 int main() {
-    int a[10], n;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &a[i]);
-    printf("Average = %.2f", average(a, n));
+    int size;
+    printf("Enter size: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter elements: ");
+    for (int i = 0; i < size; i++) scanf("%d", &arr[i]);
+    printf("Average: %.2f\n", average(arr, size));
     return 0;
 }

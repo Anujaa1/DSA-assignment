@@ -1,28 +1,36 @@
 #include <stdio.h>
 
-int sum(int a[], int n) {
-    int s = 0;
-    for(int i = 0; i < n; i++) s += a[i];
-    return s;
+int sumArray(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) sum += arr[i];
+    return sum;
 }
-int max(int a[], int n) {
-    int m = a[0];
-    for(int i = 1; i < n; i++) if(a[i] > m) m = a[i];
-    return m;
+
+int maxArray(int arr[], int size) {
+    int max = arr[0];
+    for (int i = 1; i < size; i++) if (arr[i] > max) max = arr[i];
+    return max;
 }
-void evenOdd(int a[], int n) {
-    int e = 0, o = 0;
-    for(int i = 0; i < n; i++)
-        if(a[i] % 2 == 0) e++; else o++;
-    printf("Even=%d Odd=%d\n", e, o);
+
+void countEvenOdd(int arr[], int size, int *even, int *odd) {
+    *even = *odd = 0;
+    for (int i = 0; i < size; i++) {
+        if (arr[i] % 2 == 0) (*even)++;
+        else (*odd)++;
+    }
 }
 
 int main() {
-    int a[10], n;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &a[i]);
-    printf("Sum=%d\n", sum(a,n));
-    printf("Max=%d\n", max(a,n));
-    evenOdd(a,n);
+    int size;
+    printf("Enter size: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter elements: ");
+    for (int i = 0; i < size; i++) scanf("%d", &arr[i]);
+    int even, odd;
+    printf("Sum: %d\n", sumArray(arr, size));
+    printf("Max: %d\n", maxArray(arr, size));
+    countEvenOdd(arr, size, &even, &odd);
+    printf("Even: %d, Odd: %d\n", even, odd);
     return 0;
 }

@@ -1,16 +1,23 @@
 #include <stdio.h>
 
-void swap(int a[], int n) {
-    int t = a[0];
-    a[0] = a[n-1];
-    a[n-1] = t;
+void swapFirstLast(int arr[], int size) {
+    if (size > 1) {
+        int temp = arr[0];
+        arr[0] = arr[size - 1];
+        arr[size - 1] = temp;
+    }
 }
 
 int main() {
-    int a[10], n;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &a[i]);
-    swap(a, n);
-    for(int i = 0; i < n; i++) printf("%d ", a[i]);
+    int size;
+    printf("Enter size: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter elements: ");
+    for (int i = 0; i < size; i++) scanf("%d", &arr[i]);
+    swapFirstLast(arr, size);
+    printf("Modified array: ");
+    for (int i = 0; i < size; i++) printf("%d ", arr[i]);
+    printf("\n");
     return 0;
 }

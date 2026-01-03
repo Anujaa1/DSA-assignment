@@ -1,23 +1,31 @@
 #include <stdio.h>
 
-int reverseMax(int a[], int n) {
-    int max = a[0];
-    for(int i = 0; i < n/2; i++) {
-        int t = a[i];
-        a[i] = a[n-1-i];
-        a[n-1-i] = t;
+int reverseAndMax(int arr[], int size) {
+    // Reverse
+    for (int i = 0; i < size / 2; i++) {
+        int temp = arr[i];
+        arr[i] = arr[size - i - 1];
+        arr[size - i - 1] = temp;
     }
-    for(int i = 0; i < n; i++)
-        if(a[i] > max) max = a[i];
+    // Find max
+    int max = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > max)
+            max = arr[i];
+    }
     return max;
 }
 
 int main() {
-    int a[10], n;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &a[i]);
-    int m = reverseMax(a, n);
-    for(int i = 0; i < n; i++) printf("%d ", a[i]);
-    printf("\nMax = %d", m);
+    int size;
+    printf("Enter size: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter elements: ");
+    for (int i = 0; i < size; i++) scanf("%d", &arr[i]);
+    int max = reverseAndMax(arr, size);
+    printf("Reversed array: ");
+    for (int i = 0; i < size; i++) printf("%d ", arr[i]);
+    printf("\nMaximum: %d\n", max);
     return 0;
 }

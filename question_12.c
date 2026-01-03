@@ -1,18 +1,29 @@
 #include <stdio.h>
 
-void countEO(int a[], int n, int *e, int *o) {
-    *e = *o = 0;
-    for(int i = 0; i < n; i++) {
-        if(a[i] % 2 == 0) (*e)++;
-        else (*o)++;
+struct Counts {
+    int even;
+    int odd;
+};
+
+struct Counts countEvenOdd(int arr[], int size) {
+    struct Counts c = {0, 0};
+    for (int i = 0; i < size; i++) {
+        if (arr[i] % 2 == 0)
+            c.even++;
+        else
+            c.odd++;
     }
+    return c;
 }
 
 int main() {
-    int a[10], n, e, o;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &a[i]);
-    countEO(a, n, &e, &o);
-    printf("Even=%d Odd=%d", e, o);
+    int size;
+    printf("Enter size: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter elements: ");
+    for (int i = 0; i < size; i++) scanf("%d", &arr[i]);
+    struct Counts c = countEvenOdd(arr, size);
+    printf("Even: %d, Odd: %d\n", c.even, c.odd);
     return 0;
 }

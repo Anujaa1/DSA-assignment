@@ -1,30 +1,30 @@
 #include <stdio.h>
 
-int sumEven(int a[], int n) {
-    int s = 0;
-    for(int i = 0; i < n; i++)
-        if(a[i] % 2 == 0) s += a[i];
-    return s;
+int sumEven(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) if (arr[i] % 2 == 0) sum += arr[i];
+    return sum;
 }
 
-int prodOdd(int a[], int n) {
-    int p = 1;
-    for(int i = 0; i < n; i++)
-        if(a[i] % 2 != 0) p *= a[i];
-    return p;
+int productOdd(int arr[], int size) {
+    int prod = 1, hasOdd = 0;
+    for (int i = 0; i < size; i++) {
+        if (arr[i] % 2 != 0) {
+            prod *= arr[i];
+            hasOdd = 1;
+        }
+    }
+    return hasOdd ? prod : 0;
 }
 
 int main() {
-    int a[10], n;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &a[i]);
-    printf("Sum Even=%d\n", sumEven(a,n));
-    printf("Product Odd=%d", prodOdd(a,n));
+    int size;
+    printf("Enter size: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter elements: ");
+    for (int i = 0; i < size; i++) scanf("%d", &arr[i]);
+    printf("Sum of even: %d\n", sumEven(arr, size));
+    printf("Product of odd: %d\n", productOdd(arr, size));
     return 0;
 }
-if (hasOdd) {
-  return prod;
-} else {
-  return 0;
-}
-Breaking it do

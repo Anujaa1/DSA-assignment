@@ -1,18 +1,25 @@
 #include <stdio.h>
 
-int countEven(int a[], int n) {
-    int c = 0;
-    for(int i = 0; i < n; i++)
-        if(a[i] % 2 == 0) c++;
-    return c;
+int countEven(int arr[], int size) {
+    int count = 0;
+    for (int i = 0; i < size; i++) {
+        if (arr[i] % 2 == 0)
+            count++;
+    }
+    return count;
 }
 
 int main() {
-    int a[10], n;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &a[i]);
-    int c = countEven(a, n);
-    if(c == 0) printf("No even number");
-    else printf("Even count = %d", c);
+    int size;
+    printf("Enter size: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter elements: ");
+    for (int i = 0; i < size; i++) scanf("%d", &arr[i]);
+    int evens = countEven(arr, size);
+    if (evens > 0)
+        printf("Even numbers count: %d\n", evens);
+    else
+        printf("No even numbers found.\n");
     return 0;
 }

@@ -1,16 +1,21 @@
 #include <stdio.h>
 
-int max(int a[], int n) {
-    int m = a[0];
-    for(int i = 1; i < n; i++)
-        if(a[i] > m) m = a[i];
-    return m;
+int findMax(int arr[], int size) {
+    int max = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > max)
+            max = arr[i];
+    }
+    return max;
 }
 
 int main() {
-    int a[10], n;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &a[i]);
-    printf("Max = %d", max(a, n));
+    int size;
+    printf("Enter size: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter elements: ");
+    for (int i = 0; i < size; i++) scanf("%d", &arr[i]);
+    printf("Maximum element: %d\n", findMax(arr, size));
     return 0;
 }

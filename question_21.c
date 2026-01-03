@@ -1,20 +1,26 @@
 #include <stdio.h>
 
-void reverse(int a[], int n) {
-    int i = 0, j = n - 1, temp;
-    while(i < j) {
-        temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-        i++; j--;
+void reverseInPlace(int arr[], int size) {
+    int start = 0, end = size - 1;
+    while (start < end) {
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
     }
 }
 
 int main() {
-    int a[10], n;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &a[i]);
-    reverse(a, n);
-    for(int i = 0; i < n; i++) printf("%d ", a[i]);
+    int size;
+    printf("Enter size: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter elements: ");
+    for (int i = 0; i < size; i++) scanf("%d", &arr[i]);
+    reverseInPlace(arr, size);
+    printf("Reversed array: ");
+    for (int i = 0; i < size; i++) printf("%d ", arr[i]);
+    printf("\n");
     return 0;
 }

@@ -1,20 +1,27 @@
 #include <stdio.h>
 
-void sort(int a[], int n) {
-    for(int i = 0; i < n; i++)
-        for(int j = i+1; j < n; j++)
-            if(a[i] > a[j]) {
-                int t = a[i];
-                a[i] = a[j];
-                a[j] = t;
+void sortAscending(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = i + 1; j < size; j++) {
+            if (arr[i] > arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
             }
+        }
+    }
 }
 
 int main() {
-    int a[10], n;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &a[i]);
-    sort(a, n);
-    for(int i = 0; i < n; i++) printf("%d ", a[i]);
+    int size;
+    printf("Enter size: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter elements: ");
+    for (int i = 0; i < size; i++) scanf("%d", &arr[i]);
+    sortAscending(arr, size);
+    printf("Sorted array: ");
+    for (int i = 0; i < size; i++) printf("%d ", arr[i]);
+    printf("\n");
     return 0;
 }

@@ -1,30 +1,41 @@
 #include <stdio.h>
 
-int countEven(int a[], int n) {
-    int c = 0, i = 0;
-    while(i < n) {
-        if(a[i] % 2 == 0) c++;
+int countEvenWhile(int arr[], int size) {
+    int count = 0, i = 0;
+    while (i < size) {
+        if (arr[i] % 2 == 0) count++;
         i++;
     }
-    return c;
+    return count;
 }
 
-void replaceOdd(int a[], int n) {
+void replaceOddWithZero(int arr[], int size) {
     int i = 0;
-    while(i < n) {
-        if(a[i] % 2 != 0) a[i] = 0;
+    while (i < size) {
+        if (arr[i] % 2 != 0) arr[i] = 0;
         i++;
     }
+}
+
+void displayArray(int arr[], int size) {
+    int i = 0;
+    while (i < size) {
+        printf("%d ", arr[i]);
+        i++;
+    }
+    printf("\n");
 }
 
 int main() {
-    int a[10], n;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &a[i]);
-
-    printf("Even Count=%d\n", countEven(a,n));
-    replaceOdd(a,n);
-
-    for(int i = 0; i < n; i++) printf("%d ", a[i]);
+    int size;
+    printf("Enter size: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter elements: ");
+    for (int i = 0; i < size; i++) scanf("%d", &arr[i]);
+    printf("Even count: %d\n", countEvenWhile(arr, size));
+    replaceOddWithZero(arr, size);
+    printf("Modified array: ");
+    displayArray(arr, size);
     return 0;
 }
